@@ -1,3 +1,79 @@
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css);
+
 body {
   padding:10px;
+  background-image: url(img/mountains.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#directions {
+	margin-top: 125px;
+}
+
+.directions {
+	font-size: 22px;
+	text-align: center;
+}
+
+nav {
+	width: 100%;
+	background-color: black;
+}
+
+p, label {
+	font-weight: bold;
+	font-size: 25px;
+	color: white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#results {
+	background-color: black;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	font-weight: 45px;
+	color: white;
+}
+
+a {
+	color: #81b71a;
+	padding: 15px;
+}
+
+.fa-spotify {
+	font-size: 25px;
+}
+
+#form1 {
+	margin-top: 75px;
+	width: 250px;
+	margin-left: 40%;
+	margin-right: 60%;
+}
+
+.form-control {
+	width: 350px;
+}
+
+img {
+	height: 15%;
+	width: 15%;
+}
+
+.container-fixed {
+	display: inline;
+}
+
+#errorMessage {
+	font-size: 15px;
+	color: red;
+}
+
+#artistList p ul {
+	text-align: center;
 }

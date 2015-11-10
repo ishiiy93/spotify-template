@@ -1,27 +1,28 @@
 var data;
-var baseUrl = 'https://api.spotify.com/v1/search?type=track&query='
+var newSongs;
+var relatedUrl = 'http://developer.echonest.com/api/v4/artist/similar?api_key=XHOSVALOFCIWRIRZ7&name='
 var myApp = angular.module('myApp', [])
 
 var myCtrl = myApp.controller('myCtrl', function($scope, $http) {
   $scope.audioObject = {}
-  $scope.getSongs = function() {
-    $http.get(baseUrl + $scope.track).success(function(response){
-      data = $scope.tracks = response.tracks.items
-      
-    })
+  $scope.getArtists = function() {
+    $('li').empty();
+    if (!$scope.lastname) {
+      $http.get(relatedUrl + $scope.firstname).success(function(response) {
+        data = $scope.artists = response.response.artists;
+      })
+    } else {
+      $http.get(relatedUrl + $scope.firstname + $scope.lastname).success(function(response){
+        data = $scope.artists = response.response.artists;
+      })
+    }
   }
-  $scope.play = function(song) {
-    if($scope.currentSong == song) {
-      $scope.audioObject.pause()
-      $scope.currentSong = false
-      return
-    }
-    else {
-      if($scope.audioObject.pause != undefined) $scope.audioObject.pause()
-      $scope.audioObject = new Audio(song);
-      $scope.audioObject.play()  
-      $scope.currentSong = song
-    }
+
+  $scope.getSongs = function(selectedArtistId) {
+    console.log(selectedArtistId);
+    $http.get('http://developer.echonest.com/api/v4/artist/songs?api_key=XHOSVALOFCIWRIRZ7&id=' + selectedArtistId + '&format=json&start=0').success(function(response) {
+      newSongs = $scope.songList = response.response.songs;
+    })
   }
 })
 
